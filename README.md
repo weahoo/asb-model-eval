@@ -22,7 +22,7 @@ This is an ASB-oriented synthetic benchmark, not a third-party production gold s
 Windows:
 
     python -m venv .venv
-    .venv\Scriptsctivate
+    .venv\Scripts\activate
     pip install -r requirements.txt
     copy configs\ollama.example.yaml configs\local.yaml
 
@@ -93,6 +93,28 @@ Model quality, ASB platform capability, and autonomous lifecycle completion are 
 The framework defines autonomy gap, interface loss, fine-tuning gain, quantization loss, lifecycle gates, controlled conditions, and the comparison matrix for Qwen, Ministral, and IBM Granite.
 
 See [docs/layered-evaluation.md](docs/layered-evaluation.md).
+
+## Codex + ASB strong-agent ceiling
+
+A fixed 20-case EvalPlus pilot (10 HumanEval+ and 10 MBPP+) measured a strong external agent authoring solutions and using ASB run_code as the official execution surface.
+
+| Metric | Result |
+|---|---:|
+| First-attempt HumanEval+ | 9/10 |
+| First-attempt MBPP+ | 8/10 |
+| Combined first attempt | 17/20 (85%) |
+| Retry-1 corrections | 3/3 |
+| Cumulative solved | 20/20 (100%) |
+| ASB execution results returned | 20/20 |
+| Lost or fabricated results | 0 |
+| Representative packaged runs | 3/3 |
+
+Within this fixed pilot, no additional correctness loss attributable to ASB was observed. The three initial failures were solution errors and passed after one explicit retry. Three representative operations also passed model-wiring preview, Windows EXE packaging, non-default inputs, and external JSON verification.
+
+This is a Codex + ASB platform ceiling, not a Qwen/Granite/Mistral model score and not a full EvalPlus leaderboard result. An entirely ASB-free replay was not independently executed on the same host, so the evidence supports “no observed ASB-induced loss in this pilot,” not universal equivalence.
+
+- [Reviewed report](results/2026-08-28-codex-asb-evalplus-pilot.md)
+- [Machine-readable summary](results/2026-08-28-codex-asb-evalplus-pilot.json)
 
 ## Honest interpretation
 
