@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "created_utc": "2026-08-28",
+  "note": "Publish commitment only, not active prompts/answers.",
+  "files": [
+    {
+      "logical_name": "mock_holdout_v2.jsonl",
+      "case_count": 68,
+      "sha256": "57ff29b54a6b2344b7c306e279efa76c69142ef3af272aca0f4110803ff2c15c"
+    },
+    {
+      "logical_name": "lifecycle_sealed_v1.jsonl",
+      "case_count": 24,
+      "sha256": "32fded2883de4b2961f58a3815e81dcd7c71532de4b1c2d936c1a5c8cb67bcb8"
+    }
+  ]
+}

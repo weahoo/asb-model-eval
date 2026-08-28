@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-08-28",
+  "platform": "Windows",
+  "python": "3.11.4",
+  "evalplus": {
+    "version": "0.3.1",
+    "humaneval_plus_release": "v0.1.10",
+    "mbpp_plus_release": "v0.2.0"
+  },
+  "bfcl": {
+    "commit": "6ea57973c7a6097fd7c5915698c54c17c5b1b6c8",
+    "package": "0.0.0.dev0",
+    "ready": false,
+    "status": "deferred",
+    "reason": "Official Windows CLI has heavy dependencies and an undeclared soundfile dependency; deferred for resource efficiency."
+  },
+  "optional": {
+    "swe_bench_verified": {
+      "ready": false,
+      "reason": "Docker not installed"
+    },
+    "ruler": {
+      "ready": false,
+      "reason": "No NVIDIA CUDA GPU; optional for current comparison"
+    }
+  },
+  "ollama_openai_compatible": false,
+  "core_comparison_ready": true,
+  "core_suite": "HumanEval+ and MBPP+ via EvalPlus"
+}

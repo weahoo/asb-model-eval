@@ -14,3 +14,12 @@ results/*.yml
 !results/.gitkeep
 .DS_Store
 Thumbs.db
+.venv-evalplus/
+.cache/
+cache/official/
+results/raw/
+artifacts/
+.venv-bfcl/
+.venv-evalplus-wsl/
+!results/2026-08-28-codex-asb-evalplus-pilot.md
+!results/2026-08-28-codex-asb-evalplus-pilot.json

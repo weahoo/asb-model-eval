@@ -101,3 +101,7 @@ Development scores are useful for debugging but are not independent evidence aft
 A real ASB lifecycle pass requires correct parameter analysis, wire-preview success without deleting inputs, successful packaging, execution with non-default parameters, and verification of external effects rather than only exit code zero.
 
 See docs/methodology.md, docs/metrics.md, and reports/README.md.
+
+## Evaluation layers (v0.2)
+
+Public development, released holdout, public lifecycle cases, official adapter registry, and a commitment to the active sealed suite are included. Lifecycle passes require a real package and two non-default external-effect checks. See docs/benchmark-publication-policy.md.

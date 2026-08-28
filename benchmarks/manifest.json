@@ -1,0 +1,29 @@
+{
+  "name": "ASB Model Evaluation Harness",
+  "version": "0.2.0",
+  "suites": [
+    {
+      "file": "benchmarks/development_v1.jsonl",
+      "cases": 40
+    },
+    {
+      "file": "benchmarks/holdout_v1.jsonl",
+      "cases": 60,
+      "status": "released"
+    },
+    {
+      "file": "benchmarks/lifecycle_public_v1.jsonl",
+      "cases": 12
+    },
+    {
+      "file": "benchmarks/official_benchmarks.registry.json",
+      "benchmarks": 5,
+      "bundled_questions": 0
+    }
+  ],
+  "active_sealed_suite": {
+    "published_content": "commitment only",
+    "file": "benchmarks/sealed_suite_commitment.json"
+  },
+  "training_exclusion": "Do not train on benchmarks/."
+}

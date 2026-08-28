@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "case_id",
+    "model",
+    "mode",
+    "attempt",
+    "gates",
+    "operator_interventions",
+    "artifacts"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "expert_ui",
+        "model_direct",
+        "model_asb_api",
+        "model_asb_ui",
+        "assisted"
+      ]
+    },
+    "operator_interventions": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "visibility",
+    "route",
+    "request",
+    "required_inputs",
+    "required_gates",
+    "non_default_runs",
+    "evidence_required"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "sealed"
+      ]
+    },
+    "required_gates": {
+      "type": "array"
+    },
+    "non_default_runs": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}

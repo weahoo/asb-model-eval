@@ -1,0 +1,45 @@
+{
+  "suite": "codex_asb_fidelity_v1",
+  "date": "2026-08-28",
+  "sample": {
+    "humaneval_plus": 10,
+    "mbpp_plus": 10,
+    "seed": "asb-codex-peak-v1"
+  },
+  "first_attempt": {
+    "humaneval_plus": 9,
+    "mbpp_plus": 8,
+    "total_pass": 17,
+    "total": 20,
+    "rate": 0.85
+  },
+  "retry1": {
+    "attempted": 3,
+    "passed": 3
+  },
+  "cumulative": {
+    "passed": 20,
+    "total": 20,
+    "rate": 1.0
+  },
+  "asb_run_code": {
+    "completed": 20,
+    "total": 20,
+    "lost_results": 0,
+    "fabricated_success": 0
+  },
+  "packaging": {
+    "wire_preview_ok": true,
+    "inputs_wired": 3,
+    "inputs_total": 3,
+    "package_created": true,
+    "non_default_runs_passed": 3,
+    "non_default_runs_total": 3,
+    "zip_sha256": "a8fa37de40114d6b46c30561fb0268e4d836b56354684016cef536407abf6beb"
+  },
+  "limitations": [
+    "fixed subset, not full leaderboard",
+    "parameter analysis blocked by missing configured model",
+    "no independently executed ASB-free replay on same host"
+  ]
+}
