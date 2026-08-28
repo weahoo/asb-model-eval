@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+results/*.json
+results/*.jsonl
+results/*.csv
+results/*.md
+results/*.yaml
+results/*.yml
+!results/.gitkeep
+.DS_Store
+Thumbs.db

@@ -1,0 +1,95 @@
+# ASB Model Eval
+
+A reproducible evaluation harness for testing local and cloud language models against Automation Skill Builder (ASB) tool-calling conventions, typed parameters, recovery behavior and safety gates.
+
+This is an ASB-oriented synthetic benchmark, not a third-party production gold standard. Mock success measures model planning only; it does not prove that a desktop action, parameterized skill or packaged executable worked.
+
+## Related projects
+
+- Targeted model: https://huggingface.co/weahoo/ASB-Qwen2.5-Coder-7B-Targeted-v2-GGUF
+- Automation Skill Builder: https://www.visualbuild.me/
+
+## Included evaluations
+
+| Set | Cases | Purpose |
+|---|---:|---|
+| development_v1 | 40 | Diagnostic set; its failure categories later informed training |
+| holdout_v1 | 60 | Post-training cases with new paths, values and wording |
+| Live ASB | Reports | UI configuration, parameter analysis, wiring, packaging and executable validation |
+
+## Quick start
+
+Windows:
+
+    python -m venv .venv
+    .venv\Scriptsctivate
+    pip install -r requirements.txt
+    copy configs\ollama.example.yaml configs\local.yaml
+
+macOS/Linux:
+
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    cp configs/ollama.example.yaml configs/local.yaml
+
+Edit the model ID in configs/local.yaml, then run:
+
+    python runners/run_openai_compatible.py --config configs/local.yaml --cases benchmarks/holdout_v1.jsonl --tools schemas/asb_mock_tools.json --output results/holdout.json
+    python scoring/score_results.py --cases benchmarks/holdout_v1.jsonl --results results/holdout.json --tools schemas/asb_mock_tools.json --output results/holdout.score.json
+
+Raw files under results/ are intentionally ignored. Publish only reviewed, redacted reports.
+
+## Ollama setup
+
+Download/run from Hugging Face:
+
+    ollama run hf.co/weahoo/ASB-Qwen2.5-Coder-7B-Targeted-v2-GGUF:Q4_K_M
+
+For a local GGUF, create a named model with a Qwen2.5 tools-aware chat template. A generic Prompt-only template may cause correct tool calls to appear as JSON in message.content instead of native message.tool_calls.
+
+Example parameters:
+
+    FROM ./ASB-Qwen2.5-Coder-7B-Targeted-v2-Q4_K_M.gguf
+    PARAMETER temperature 0.1
+    PARAMETER top_p 0.9
+    PARAMETER num_ctx 32768
+
+Do not infer usable context from PARAMETER num_ctx alone. Check the GGUF metadata:
+
+    ollama show asb-qwen25-coder-targeted-v2 --verbose
+
+The evaluated Q4_K_M file reports:
+
+    qwen2.context_length = 32768
+
+Setting num_ctx 49152 did not override that model metadata. The tested ASB Start describing request was about 37.3k tokens and was rejected before inference. A truly long-context GGUF/export or a smaller ASB tool prompt is required for that route.
+
+## Current targeted-v2 finding
+
+Windows/Ollama evaluation on 2026-08-28 found:
+
+| Capability | Result |
+|---|---|
+| Semantic smoke behavior | 3/3 correct |
+| Leading-zero string preservation | Pass |
+| Destructive-request refusal | Pass |
+| Native OpenAI-compatible tool_calls | Fail; calls appeared in content JSON |
+| Short code generation | Failed source review after two attempts |
+| ASB parameter analysis | Pass; 3/3 inputs plus output |
+| Model-wiring preview | Pass after deterministic code correction |
+| Windows EXE packaging | Pass |
+| Two non-default EXE runs | Pass |
+| Independent trusted-agent lifecycle | Not achieved |
+
+The successful EXE proves the ASB wiring and packaging path. It does not prove independent model completion because generated code required deterministic correction.
+
+See reports/2026-08-28-qwen25-targeted-v2-asb-lifecycle.md for evidence and limitations.
+
+## Honest interpretation
+
+Development scores are useful for debugging but are not independent evidence after their failures influence training. Report holdout results separately.
+
+A real ASB lifecycle pass requires correct parameter analysis, wire-preview success without deleting inputs, successful packaging, execution with non-default parameters, and verification of external effects rather than only exit code zero.
+
+See docs/methodology.md, docs/metrics.md, and reports/README.md.

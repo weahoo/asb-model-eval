@@ -1,0 +1,5 @@
+base_url: https://openrouter.ai/api/v1
+model: replace-with-openrouter-model-id
+api_key_env: OPENROUTER_API_KEY
+temperature: 0.1
+timeout_seconds: 180

@@ -1,0 +1,251 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "data_write",
+      "description": "Write UTF-8 text under ASB sandbox.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "content"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "data_read",
+      "description": "Read UTF-8 text under ASB sandbox.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "data_copy",
+      "description": "Copy a sandbox file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "find_latest_file",
+      "description": "Find newest matching file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "folder": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "folder"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "csv_filter",
+      "description": "Filter CSV rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "input_csv": {
+            "type": "string"
+          },
+          "output_csv": {
+            "type": "string"
+          },
+          "column": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "value": {}
+        },
+        "required": [
+          "input_csv",
+          "output_csv",
+          "column",
+          "operator",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "run_python",
+      "description": "Run bounded Python.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "timeout": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "playwright_navigate",
+      "description": "Navigate existing CDP page.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "playwright_fill",
+      "description": "Fill browser locator.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "locator": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "locator",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "screenshot_region",
+      "description": "Capture screen region.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "left": {
+            "type": "integer"
+          },
+          "top": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "save_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "top",
+          "width",
+          "height",
+          "save_path"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "package_skill",
+      "description": "Package validated ASB skill.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "script_path": {
+            "type": "string"
+          },
+          "output_folder": {
+            "type": "string"
+          },
+          "console": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "script_path",
+          "output_folder"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+]

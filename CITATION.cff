@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this evaluation harness, please cite this repository."
+title: "ASB Model Eval"
+type: software
+authors:
+  - name: "weahoo"
+repository-code: "https://github.com/weahoo/asb-model-eval"
+url: "https://www.visualbuild.me/"
+license: MIT
+date-released: 2026-08-28
+version: 0.1.0

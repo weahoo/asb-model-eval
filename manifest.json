@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-08-28",
+  "development_cases": 40,
+  "holdout_cases": 60,
+  "tool_schemas": 10,
+  "holdout_exact_training_prompt_overlap": 0,
+  "notes": [
+    "development_v1 influenced later targeted training",
+    "holdout_v1 created after targeted training data was frozen",
+    "mock evaluation does not execute ASB tools"
+  ]
+}
