@@ -86,6 +86,14 @@ The successful EXE proves the ASB wiring and packaging path. It does not prove i
 
 See reports/2026-08-28-qwen25-targeted-v2-asb-lifecycle.md for evidence and limitations.
 
+## Layered evaluation framework
+
+Model quality, ASB platform capability, and autonomous lifecycle completion are reported separately. A capable external operator driving the normal ASB UI establishes the **Expert ASB Baseline**; it is an oracle ceiling, not a model score. Offline models are then evaluated directly, through the ASB API, and through the autonomous UI lifecycle.
+
+The framework defines autonomy gap, interface loss, fine-tuning gain, quantization loss, lifecycle gates, controlled conditions, and the comparison matrix for Qwen, Ministral, and IBM Granite.
+
+See [docs/layered-evaluation.md](docs/layered-evaluation.md).
+
 ## Honest interpretation
 
 Development scores are useful for debugging but are not independent evidence after their failures influence training. Report holdout results separately.
