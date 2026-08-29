@@ -8,11 +8,11 @@ Date: 2026-08-29
 |---|---:|---:|---:|---:|
 | Codex agent blind/manual baseline | **97.5%** | **97.22%** | **100%** | N/A |
 | Qwen3-8B tool-call Pilot v1, L4/Ollama | 75% | 72.22% | 100% | 6.64 s |
-| Qwen 3.5 local baseline | 75% | 75% | 75% | 19.39 s |
+| Qwen3.5-4B Q4, mock-only baseline | 75% | 75% | 75% | 19.39 s |
 | Granite 4.2 targeted-v1 | 70% | 66.67% | 100% | 64.77 s |
 | Qwen2.5-Coder targeted-v2 | 10% | 0% | 100% | 8.54 s |
 
-Qwen2.5 targeted-v2's zero tool-case rate reflects its OpenAI-compatible protocol problem: calls were emitted in message content instead of native message.tool_calls.
+Qwen2.5 targeted-v2's zero tool-case rate reflects its OpenAI-compatible protocol problem: calls were emitted in message content instead of native message.tool_calls. Qwen3.5-4B's 75% is also mock-only: in the real trusted-AI lifecycle it stopped after reading OpenAPI, identified only 1/3 parameters, and required deterministic code/wiring correction before the EXE passed.
 
 ## Blind-test method
 
