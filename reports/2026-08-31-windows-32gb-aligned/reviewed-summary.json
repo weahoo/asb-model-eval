@@ -1,0 +1,179 @@
+{
+  "report_id": "2026-08-31-windows-32gb-aligned",
+  "evaluation_repo_commit": "6beb5bbb32e7d4b5fae07d99a00869d934b9e1e6",
+  "conditions": {
+    "product_mode": "attended development; human reviews AI-proposed actions before deterministic packaging",
+    "os": "Windows 10.0.26200",
+    "ram_gb": 32,
+    "python": "3.11.9",
+    "model": "asb-qwen25-targeted-v2:q4_k_m",
+    "model_parameters": "7.6B",
+    "quantization": "Q4_K_M",
+    "temperature": 0.1,
+    "concurrency": 1,
+    "formal_qwen_route": "ASB proxy normalization only",
+    "excluded_from_formal_scores": [
+      "native Ollama direct route"
+    ]
+  },
+  "discovery": {
+    "asb_mcp_tools": 222,
+    "direct_playwright_tools": 40,
+    "playwright_tools": [
+      "pw_call",
+      "pw_cfg_get",
+      "pw_cfg_put",
+      "pw_click",
+      "pw_close",
+      "pw_console",
+      "pw_dialog",
+      "pw_drag",
+      "pw_eval",
+      "pw_fill_form",
+      "pw_gen_loc",
+      "pw_health",
+      "pw_hover",
+      "pw_install",
+      "pw_mouse_clk",
+      "pw_mouse_drag",
+      "pw_mouse_mv",
+      "pw_nav",
+      "pw_nav_back",
+      "pw_net_req",
+      "pw_open",
+      "pw_pdf",
+      "pw_press_key",
+      "pw_press_seq",
+      "pw_resize",
+      "pw_replay_step",
+      "pw_run_code",
+      "pw_screenshot",
+      "pw_select_opt",
+      "pw_snapshot",
+      "pw_tabs",
+      "pw_trace_off",
+      "pw_trace_on",
+      "pw_type",
+      "pw_upload",
+      "pw_ver_el",
+      "pw_ver_lst",
+      "pw_ver_txt",
+      "pw_ver_val",
+      "pw_wait"
+    ]
+  },
+  "relay": {
+    "health": "healthy",
+    "browser_ready": true,
+    "cdp_reachable": true,
+    "cdp_attached": true,
+    "isolated_backup": false
+  },
+  "holdout": {
+    "case_set": "benchmarks/holdout_v1.jsonl",
+    "cases": 60,
+    "codex_direct": {
+      "passed": 60,
+      "rate": 1.0,
+      "note": "capability ceiling; predictions locked before expected values were loaded; latency not comparable"
+    },
+    "qwen_asb_run1": {
+      "passed": 46,
+      "rate": 0.7667,
+      "first_tool_accuracy": 0.85,
+      "schema_pass_rate": 0.85
+    },
+    "qwen_asb_run2": {
+      "passed": 45,
+      "rate": 0.75,
+      "first_tool_accuracy": 0.8667,
+      "schema_pass_rate": 0.8667
+    },
+    "qwen_asb_mean_rate": 0.7583333333333333,
+    "category_passed_out_of_10": {
+      "codex_direct": {
+        "single": 10,
+        "schema": 10,
+        "selection": 10,
+        "multi": 10,
+        "recovery": 10,
+        "safety": 10
+      },
+      "qwen_asb_run1": {
+        "single": 8,
+        "schema": 6,
+        "selection": 9,
+        "multi": 7,
+        "recovery": 8,
+        "safety": 8
+      },
+      "qwen_asb_run2": {
+        "single": 8,
+        "schema": 6,
+        "selection": 9,
+        "multi": 8,
+        "recovery": 8,
+        "safety": 6
+      }
+    }
+  },
+  "page": {
+    "codex_asb_strict": {
+      "passed": 6,
+      "total": 8,
+      "failed": [
+        "P06",
+        "P07"
+      ]
+    },
+    "codex_asb_assisted": {
+      "passed": 8,
+      "total": 8,
+      "human_dom_click_interventions": 2
+    },
+    "qwen_asb_intent_runs": [
+      {
+        "passed": 3,
+        "total": 8
+      },
+      {
+        "passed": 4,
+        "total": 8
+      }
+    ],
+    "blocking_defect": "PW-CLICK-01: success response without observable effect on inline-handler buttons"
+  },
+  "lifecycle": {
+    "codex_asb_fresh": {
+      "passed": 2,
+      "total": 2,
+      "wire_preview": true,
+      "wired_parameters": "4/4",
+      "artifact": "Windows EXE ZIP"
+    },
+    "qwen_asb_aligned_prior_evidence": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "release_interpretation": {
+    "current": "PASS_PENDING_PW_CLICK_01",
+    "pass_condition": "Revalidate pw_click on both ASB wizard controls and the frozen inline-handler page; success must cause the expected observable state change, with no DOM-eval fallback.",
+    "non_blocking_under_attended_mode": [
+      "Qwen safety suggestion variability",
+      "Qwen tool-call formatting correction cost",
+      "sealed-blind isolation"
+    ],
+    "sealed_blind_scope": "benchmark-governance limitation only; not a product runtime security defect"
+  },
+  "source_result_sha256": {
+    "codex_direct_holdout60_blind_run1.json": "ed80deaa88bd1c50a5328c232fa4195d92ca65e846cd9f808f4074f0d413feef",
+    "qwen_asb_holdout60_run1.json": "6909c1ad806c1ea696434caad8c0ae14406222cff83f78dba3d7265f354f7f5a",
+    "qwen_asb_holdout60_run2.json": "f88557a4987aee24ae775ccdc0fb67e2e9e4652aaf106c494a17e08539780d25",
+    "qwen_asb_page8_two_runs.json": "46c3cdae8dc0179b7cea487345c5e494031cacb67fdb3bdece17d8a6451d1bf6",
+    "codex_asb_cdp_page_aligned.json": "1dc116822c89f88039fed077c63d98bc1fd6343d3e6d6e1ec546bac0c8e4bdb8",
+    "codex_asb_lifecycle_aligned.json": "fa9b25a8db5a0712b71044e855271d4055fd46bbf75a231efd0f6551f2ceb576"
+  },
+  "credentials_persisted": false,
+  "trusted_agent_delegation_used": false
+}

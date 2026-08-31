@@ -127,3 +127,11 @@ See docs/methodology.md, docs/metrics.md, and reports/README.md.
 ## Evaluation layers (v0.2)
 
 Public development, released holdout, public lifecycle cases, official adapter registry, and a commitment to the active sealed suite are included. Lifecycle passes require a real package and two non-default external-effect checks. See docs/benchmark-publication-policy.md.
+
+## Latest Windows 32 GB aligned comparison
+
+The 2026-08-31 reviewed comparison covers Codex direct, Codex driving ASB, and Qwen2.5 targeted v2 through ASB normalization. Native Ollama-direct results are excluded from formal scoring.
+
+Current verdict: **PASS pending PW-CLICK-01** under ASB's attended-development condition. The Qwen safety/format findings are non-blocking quality observations; sealed-blind isolation is benchmark governance.
+
+See [reports/2026-08-31-windows-32gb-aligned/](reports/2026-08-31-windows-32gb-aligned/).
