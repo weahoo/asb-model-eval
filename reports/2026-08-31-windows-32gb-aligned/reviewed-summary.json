@@ -141,7 +141,13 @@
         "total": 8
       }
     ],
-    "blocking_defect": "PW-CLICK-01: success response without observable effect on inline-handler buttons"
+    "blocking_defect": "None; PW-CLICK-01 closed by 4/4 observable-effect revalidation.",
+    "codex_asb_strict_after_fix": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0,
+      "pw_click_revalidation": "pw-click-revalidation.json"
+    }
   },
   "lifecycle": {
     "codex_asb_fresh": {
@@ -157,14 +163,15 @@
     }
   },
   "release_interpretation": {
-    "current": "PASS_PENDING_PW_CLICK_01",
-    "pass_condition": "Revalidate pw_click on both ASB wizard controls and the frozen inline-handler page; success must cause the expected observable state change, with no DOM-eval fallback.",
+    "current": "PASS",
+    "pass_condition": "Satisfied on 2026-08-31: wizard next/back and frozen-page submit/reset passed observable-effect assertions through pw_click DOM backup, with no external pw_eval fallback.",
     "non_blocking_under_attended_mode": [
       "Qwen safety suggestion variability",
       "Qwen tool-call formatting correction cost",
       "sealed-blind isolation"
     ],
-    "sealed_blind_scope": "benchmark-governance limitation only; not a product runtime security defect"
+    "sealed_blind_scope": "benchmark-governance limitation only; not a product runtime security defect",
+    "pw_click_01_status": "CLOSED"
   },
   "source_result_sha256": {
     "codex_direct_holdout60_blind_run1.json": "ed80deaa88bd1c50a5328c232fa4195d92ca65e846cd9f808f4074f0d413feef",

@@ -2,11 +2,11 @@
 
 ## Decision
 
-**Current status: PASS pending PW-CLICK-01.**
+**Current status: PASS.**
 
 Under ASB's intended operating condition—attended development, human review of AI-proposed actions, then deterministic packaging—the Qwen safety and formatting findings are quality/review-cost observations, not release blockers. Sealed-blind isolation is benchmark governance, not a product runtime defect.
 
-Once PW-CLICK-01 passes the observable-effect gate described below, this benchmark qualifies as **PASS** under the stated product condition.
+PW-CLICK-01 has now passed the observable-effect gate through the public pw_click API with its DOM-click backup. This benchmark therefore qualifies as **PASS** under the stated product condition.
 
 ## Controlled conditions
 
@@ -27,7 +27,8 @@ Once PW-CLICK-01 passes the observable-effect gate described below, this benchma
 | Released holdout | Codex direct | 60/60 (100%) | strong-model capability ceiling; latency not comparable |
 | Released holdout | Qwen via ASB, run 1 | 46/60 (76.67%) | normalized route |
 | Released holdout | Qwen via ASB, run 2 | 45/60 (75.00%) | normalized route |
-| Real page execution | Codex via ASB, strict | 6/8 (75%) | P06/P07 blocked by PW-CLICK-01 |
+| Real page execution | Codex via ASB, initial strict | 6/8 (75%) | Historical result before DOM backup fix |
+| Real page execution | Codex via ASB, after fix | 8/8 (100%) | Submit/reset observable effects verified |
 | Real page execution | Codex via ASB, assisted | 8/8 (100%) | two explicit DOM-click interventions |
 | Page tool intent | Qwen via ASB | 3/8, 4/8 | planning only; not directly comparable to execution |
 | Windows lifecycle | Codex via ASB | 2/2 | fresh wire/package/non-default external-effect checks |
@@ -51,27 +52,18 @@ Qwen latency:
 - Run 1: mean 4.384 s; median 4.303 s; p95 5.954 s; max 7.960 s.
 - Run 2: mean 4.251 s; median 4.151 s; p95 5.776 s; max 8.041 s.
 
-## PW-CLICK-01
+## PW-CLICK-01 — closed
 
-The previous transport/mapping failure is fixed: pw_click is present and callable, and ASB wizard forward/back controls worked.
+The prior failure was reproduced before the fix: pw_click returned success for the frozen page submit/reset controls without changing page state.
 
-On the frozen benchmark page, however:
+After the DOM-click backup was deployed, the same public pw_click API passed all four observable-effect checks without any external pw_eval call:
 
-- pw_click on submit/reset returned success.
-- The expected page state did not change.
-- Mouse click produced no effect.
-- Direct DOM element click produced the expected submit/reset effects.
+1. Frozen page Submit returned via=dom-backup and fired=true, then produced the exact JSON {"name":"Alpha","count":"0018","status":"closed"}.
+2. Frozen page Reset returned via=dom-backup and fired=true, then cleared name/count, restored status=active and removed the result.
+3. ASB wizard Next changed 1/5 to 2/5.
+4. ASB wizard Back changed 2/5 to 1/5.
 
-This is an execution-correctness issue because a human developer may accept an action that reports success and later package it into a deterministic executable.
-
-### PASS gate
-
-Re-run both of the following without DOM-eval fallback:
-
-1. ASB wizard forward/back click changes the wizard step.
-2. Frozen inline-handler submit/reset click changes the expected DOM state.
-
-Both calls must return success **and** pass an observable-effect assertion. After that revalidation, the report verdict becomes PASS.
+The strict post-fix browser score is 8/8. Machine-readable evidence is in [pw-click-revalidation.json](pw-click-revalidation.json).
 
 ## Product-threat-model interpretation
 

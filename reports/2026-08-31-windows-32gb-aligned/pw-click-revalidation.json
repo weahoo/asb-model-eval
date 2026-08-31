@@ -1,0 +1,87 @@
+{
+  "test": "PW-CLICK-01 DOM-backup observable-effect revalidation",
+  "timestamp_utc": "2026-08-31T05:32:31.800911+00:00",
+  "host": "Windows 10.0.26200 / 32 GB",
+  "relay": {
+    "status": "healthy",
+    "browser_ready": true,
+    "cdp_devtools_reachable": true,
+    "cdp_mcp_attached": true
+  },
+  "constraints": {
+    "public_pw_click_only": true,
+    "external_pw_eval_used": false,
+    "trusted_agent_delegation_used": false
+  },
+  "cases": [
+    {
+      "id": "PW-B01",
+      "surface": "frozen benchmark page",
+      "action": "Submit",
+      "pw_click_result": {
+        "via": "dom-backup",
+        "fired": true
+      },
+      "observable_effect": {
+        "exact_text": "{\"name\":\"Alpha\",\"count\":\"0018\",\"status\":\"closed\"}",
+        "verified": true
+      },
+      "pass": true
+    },
+    {
+      "id": "PW-B02",
+      "surface": "frozen benchmark page",
+      "action": "Reset",
+      "pw_click_result": {
+        "via": "dom-backup",
+        "fired": true
+      },
+      "observable_effect": {
+        "name": "",
+        "count": "",
+        "status": "active",
+        "result_removed": true
+      },
+      "pass": true
+    },
+    {
+      "id": "PW-W01",
+      "surface": "ASB welcome wizard",
+      "action": "Next",
+      "pw_click_result": {
+        "via": "dom-backup",
+        "fired": true
+      },
+      "observable_effect": {
+        "before": "1 / 5",
+        "after": "2 / 5"
+      },
+      "pass": true
+    },
+    {
+      "id": "PW-W02",
+      "surface": "ASB welcome wizard",
+      "action": "Back",
+      "pw_click_result": {
+        "via": "dom-backup",
+        "fired": true
+      },
+      "observable_effect": {
+        "before": "2 / 5",
+        "after": "1 / 5"
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "total": 4,
+    "rate": 1.0,
+    "verdict": "PASS"
+  },
+  "defect": {
+    "id": "PW-CLICK-01",
+    "status": "CLOSED",
+    "resolution": "pw_click probes the click event and invokes DOM element click as backup when the Playwright click path does not fire it; all required observable effects passed."
+  }
+}

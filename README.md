@@ -132,6 +132,6 @@ Public development, released holdout, public lifecycle cases, official adapter r
 
 The 2026-08-31 reviewed comparison covers Codex direct, Codex driving ASB, and Qwen2.5 targeted v2 through ASB normalization. Native Ollama-direct results are excluded from formal scoring.
 
-Current verdict: **PASS pending PW-CLICK-01** under ASB's attended-development condition. The Qwen safety/format findings are non-blocking quality observations; sealed-blind isolation is benchmark governance.
+Current verdict: **PASS** under ASB's attended-development condition. PW-CLICK-01 passed a 4/4 observable-effect revalidation using the mapped pw_click DOM backup. The Qwen safety/format findings are non-blocking quality observations; sealed-blind isolation is benchmark governance.
 
 See [reports/2026-08-31-windows-32gb-aligned/](reports/2026-08-31-windows-32gb-aligned/).

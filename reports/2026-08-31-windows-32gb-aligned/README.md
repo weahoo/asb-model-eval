@@ -10,4 +10,4 @@ Start with [aligned-comparison.md](aligned-comparison.md). Machine-readable revi
 
 Raw model responses are not published here, following the repository policy. The released holdout and ASB mock schema are available under ../../benchmarks and ../../schemas.
 
-Verdict: **PASS pending PW-CLICK-01**. Once the click observable-effect gate passes, the verdict is PASS under the attended-development condition.
+Verdict: **PASS** under the attended-development condition. PW-CLICK-01 is closed by a 4/4 observable-effect revalidation using pw_click's DOM-click backup.
